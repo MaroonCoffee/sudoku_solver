@@ -14,8 +14,15 @@ def board_init():
     print("Please type each row of the sudoku board, with '0' in place of unknown numbers.")
     for row in range(1, 10):
         column = 1
-        print("Row ", row, ": ", sep="", end="")
-        usr_input = input()
+        while True:
+            print("Row ", row, ": ", sep="", end="")
+            usr_input = input()
+            if not usr_input.isdigit():
+                print("Invalid row! Row must contain only numbers.")
+            elif len(usr_input) != 9:
+                print("Invalid row! Row must contain exactly 9 numbers.")
+            else:
+                break
         # Takes each inputted character in the row and records its positional data
         for num in usr_input:
             square = square_identifier(row, column)
