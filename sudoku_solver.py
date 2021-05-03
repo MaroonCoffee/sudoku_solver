@@ -99,12 +99,15 @@ def check_digit_possibility(tile, board, value):
 
 # Parses the board list and outputs the completed sudoku puzzle
 def print_board(board):
+    print("-------------------------------------------")
+    print("Here is your completed Sudoku puzzle!\n")
     output_row = ""
     for tile in board:
         output_row += (tile[0])
         if (int(tile[2]) % 9) == 0:
             print(output_row)
             output_row = ""
+    print("-------------------------------------------")
 
 
 main()
