@@ -8,7 +8,7 @@ def main():
 
 def board_init():
     board = []
-    print("Please type each row the sudoku board, with '0' in place of unknown numbers.")
+    print("Please type each row of the sudoku board, with '0' in place of unknown numbers.")
     for row in range(1, 10):
         column = 1
         print("Row ", row, ": ", sep="", end="")
