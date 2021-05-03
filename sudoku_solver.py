@@ -65,7 +65,6 @@ def solve_board(board):
             solved_tile = solve_tile(tile, board)
             if solved_tile != "0":
                 tile[0] = solved_tile
-                print(tile)
                 solved_tiles += 1
     if solved_tiles > 0:
         return True
