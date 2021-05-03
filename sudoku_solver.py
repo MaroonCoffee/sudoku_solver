@@ -1,11 +1,14 @@
 def main():
     board = board_init()
     board_incomplete = True
+    # Repeats the cycle of checking every space on the board until either
+    # the board is complete or no further progress can be made
     while board_incomplete:
         board_incomplete = solve_board(board)
     print_board(board)
 
 
+# Launches a prompt to input a sudoku board
 def board_init():
     board = []
     print("Please type each row of the sudoku board, with '0' in place of unknown numbers.")
@@ -13,14 +16,16 @@ def board_init():
         column = 1
         print("Row ", row, ": ", sep="", end="")
         usr_input = input()
+        # Takes each inputted character in the row and records its positional data
         for num in usr_input:
-            num_info = board_filler(num, row, column)
-            board.append(num_info)
+            square = square_identifier(row, column)
+            board.append([num, row, column, square])
             column += 1
     return board
 
 
-def board_filler(digit, row, column):
+# Identifies the 3x3 square a given value is in
+def square_identifier(row, column):
     if column <= 3:
         if row <= 3:
             square = 1
@@ -42,9 +47,10 @@ def board_filler(digit, row, column):
             square = 6
         else:
             square = 9
-    return [digit, row, column, square]
+    return square
 
 
+# Checks every tile to see if it is filled in, and if not, attempts to fill it in
 def solve_board(board):
     solved_tiles = 0
     for tile in board:
@@ -60,6 +66,7 @@ def solve_board(board):
         return False
 
 
+# Checks to see if there a single possible solution to a tile, and if so, fills it in
 def solve_tile(tile, board):
     possible_values = []
     for value in range(1, 10):
@@ -72,6 +79,7 @@ def solve_tile(tile, board):
         return str(0)
 
 
+# Checks adjacent tiles to see if the inputted solution is valid
 def check_digit_possibility(tile, board, value):
     # Checks the location of every number on the board
     for num in board:
@@ -83,6 +91,7 @@ def check_digit_possibility(tile, board, value):
     return True
 
 
+# Parses the board list and outputs the completed sudoku puzzle
 def print_board(board):
     output_row = ""
     for tile in board:
