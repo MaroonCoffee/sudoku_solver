@@ -1,0 +1,3 @@
+A basic sudoku solver that I made in python in about an hour lol. It can solve basic sudoku puzzles, however it is unable to solve puzzles requring the analysis of naked pairs. In the future I plan to implement this analysis, as well as any other techniques required to solve advanced Sudoku puzzles.
+
+This program was essentially a test of my basic python skills, and as such should not be taken too seriously.
